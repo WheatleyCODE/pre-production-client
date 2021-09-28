@@ -8,7 +8,7 @@ module.exports = {
     'next/core-web-vitals',
     'prettier',
   ],
-  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'prettier', 'react-hooks'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
