@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import React, { FC } from 'react';
 import { AppProps } from 'next/app';
-import { wrapper } from '../redux/store';
+import { wrapper } from '../redux';
 
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => <Component {...pageProps} />;
 
