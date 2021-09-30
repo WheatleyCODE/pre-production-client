@@ -1,8 +1,7 @@
 import { FC, useState } from 'react';
-import { useActions } from '../hooks/useAction';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions, useTypedSelector } from '@hooks';
 
-const LoginForm: FC = () => {
+export const LoginForm: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -55,5 +54,3 @@ const LoginForm: FC = () => {
     </div>
   );
 };
-
-export default LoginForm;

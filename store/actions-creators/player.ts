@@ -1,8 +1,8 @@
 import UsersService from '../../services/UserService';
 import { Dispatch } from 'react';
-import AuthService from '../../services/AuthService';
-import { IUser } from './../../types/IUser';
-import { PlayerAction, PlayerActionTypes } from './../../types/player';
+import AuthService from '@services';
+import { IUser } from '../../types/IUser';
+import { PlayerAction, PlayerActionTypes } from '../../types/player';
 import axios from 'axios';
 import { AuthResponse } from '../../types/response/AuthResponse';
 import { API_URL } from '../../http';

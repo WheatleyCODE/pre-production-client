@@ -1,4 +1,4 @@
-import { IUser } from './../../types/IUser';
+import { IUser } from '../../types/IUser';
 import { PlayerState, PlayerAction, PlayerActionTypes } from '../../types/player';
 
 const initialState: PlayerState = {
@@ -27,7 +27,7 @@ export const playerReducer = (state = initialState, action: PlayerAction): Playe
         ...state,
         user: {
           ...action.payload,
-        }
+        },
       };
     }
 

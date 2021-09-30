@@ -2,10 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import LoginForm from '../components/LoginForm';
-import { useActions } from '../hooks/useAction';
-import { useTypedSelector } from '../hooks/useTypedSelector';
-import styles from '../styles/Home.module.css';
+import { LoginForm } from '@components';
+import { useActions, useTypedSelector } from '@hooks';
 
 const Home: NextPage = () => {
   const { test } = useTypedSelector((state) => state.player);

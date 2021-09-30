@@ -27,6 +27,7 @@ module.exports = {
     'react/require-default-props': 0,
     'react/jsx-one-expression-per-line': 0,
     'react/state-in-constructor': 0,
+    'import/no-anonymous-default-export': 0,
     'react-hooks/exhaustive-deps': 0,
     'react/jsx-props-no-spreading': 0,
     'no-console': ['warn', { allow: ['warn', 'error'] }],
