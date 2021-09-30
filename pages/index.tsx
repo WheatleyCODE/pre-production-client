@@ -9,10 +9,13 @@ import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   const { test } = useTypedSelector((state) => state.player);
-  const { setTestAc } = useActions();
+  const { setTestAc, checkAuth } = useActions();
 
   useEffect(() => {
     setTestAc(['arr', 'arr', 'marr']);
+    if (localStorage.getItem('token')) {
+      checkAuth();
+    }
   }, []);
   return (
     <>
