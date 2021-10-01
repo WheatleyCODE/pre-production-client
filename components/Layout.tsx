@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import s from '../styles/components/Layout.module.scss';
+import s from '@s.components/Layout.module.scss';
+import { ActiveLink } from '@UI';
 
 export interface LayoutProps {
   title: string;
@@ -14,24 +15,29 @@ export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' })
       </Head>
       <div className={s.navBar}>
         <div className={s.width}>
-          <div className={s.logo} />
+          <div className={s.logo}>
+            <Link class-name="link" href="/">
+              Главная
+            </Link>
+          </div>
           <div>
             <nav className={s.menu}>
-              <Link class-name="link" href="/">
+              <ActiveLink className={s.link} href="/">
                 Главная
-              </Link>
-              <Link class-name="link" href="/login">
-                Логин
-              </Link>
-              <Link class-name="link" href="/login">
+              </ActiveLink>
+              <ActiveLink className={s.link} href="/post">
                 Посты
-              </Link>
-              <Link class-name="link" href="/login">
+              </ActiveLink>
+              <ActiveLink className={s.link} href="/cast">
                 Касты
-              </Link>
+              </ActiveLink>
             </nav>
           </div>
-          <div className={s.user} />
+          <div className={s.user}>
+            <Link class-name="link" href="/login">
+              Логин
+            </Link>
+          </div>
         </div>
       </div>
       <main>{children}</main>
