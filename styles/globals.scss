@@ -1,8 +1,35 @@
-/* Указываем box sizing */
+@font-face {
+  font-family: 'Roboto light';
+  src: url('../assets/font/Roboto-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto thin';
+  src: url('../assets/font/Roboto-Thin.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto medium';
+  src: url('../assets/font/Roboto-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto bold';
+  src: url('../assets/font/Roboto-Bold.ttf');
+}
+
+* {
+  font-family: Roboto light;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
 
 ul[class],

@@ -1,0 +1,44 @@
+@import '../variables';
+@import '../mixins';
+
+.navBar {
+  @include flex-center;
+  height: $headerHeight;
+  box-shadow: $boxShadow;
+}
+
+.width {
+  @include flex-center;
+  @include max-width;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.menu {
+  @include flex-center;
+  height: 100%;
+  width: 400px;
+
+  a {
+    color: $colorBlack;
+    margin: 12px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $colorGreen;
+    }
+  }
+}
+
+.logo {
+  @include flex-center;
+  background-color: $colorLightGrey;
+  height: 100%;
+  width: 60px;
+}
+.user {
+  @include flex-center;
+  background-color: $colorLightGrey;
+  height: 100%;
+  width: 60px;
+}
