@@ -1,6 +1,7 @@
-import { useActions, useTypedSelector } from '@hooks';
+import { useActions } from '@hooks';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
+import s from '@s.pages/index.module.scss';
 
 const Home: NextPage = () => {
   const { checkAuth } = useActions();
@@ -12,10 +13,12 @@ const Home: NextPage = () => {
   }, []);
 
   // ! Добавить проверку на ативированнй аккаунт
-
   return (
-    <div>
-      <h1>Home!</h1>
+    <div className={s.main}>
+      <div className={s.title}>
+        <h1>Spotify Clone</h1>
+        <h2>Эта страница должна заитересовать пользователя, да?</h2>
+      </div>
     </div>
   );
 };

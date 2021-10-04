@@ -59,3 +59,13 @@
   color: $colorBlack;
   font-size: 16px;
 }
+
+.logout {
+  color: $colorBlack;
+  transition: color 1.3s;
+
+  &:hover {
+    color: $colorGreen;
+    cursor: pointer;
+  }
+}

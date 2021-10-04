@@ -1,0 +1,18 @@
+@import '../mixins';
+@import '../variables';
+
+.main {
+  @include flex-center;
+}
+
+.title {
+  @include flex-center;
+  flex-direction: column;
+  padding-top: 160px;
+
+  h1 {
+    font-size: 90px;
+    font-family: Roboto bold;
+    color: $colorGreen;
+  }
+}

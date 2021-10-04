@@ -46,7 +46,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' })
           <div className={s.user}>
             {isAuth && (
               <>
-                <div onClick={() => logout()}>Выйти</div>
+                <div className={s.logout} onClick={() => logout()}>
+                  Выйти
+                </div>
               </>
             )}
             {!isAuth && (
