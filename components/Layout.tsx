@@ -1,17 +1,16 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Image from 'next/image';
 import { ActiveLink } from '@UI';
 import logo from '../assets/img/logo.png';
-import s from '@s.components/Layout.module.scss';
 import { useActions, useTypedSelector } from '@hooks';
+import s from '@s.components/Layout.module.scss';
 
 export interface LayoutProps {
   title: string;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' }) => {
-  const { user, isAuth } = useTypedSelector((state) => state.player);
+  const { isAuth } = useTypedSelector((state) => state.player);
   const { logout } = useActions();
 
   return (
