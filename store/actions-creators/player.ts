@@ -6,6 +6,7 @@ import { PlayerAction, PlayerActionTypes } from '../../types/player';
 import axios from 'axios';
 import { AuthResponse } from '../../types/response/AuthResponse';
 import { API_URL } from '../../http';
+import { PostsService } from '@services/PostsService';
 
 export const setTestAc = (arr: any[]): PlayerAction => {
   return {
@@ -92,6 +93,17 @@ export const fetchUsers = () => {
       const res = await UserService.fetchUsers();
       console.log(res);
       dispatch(setTestAc(res.data));
+    } catch (e) {
+      console.log(e?.response?.data?.message);
+    }
+  };
+};
+
+export const fetchPosts = () => {
+  return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
+    try {
+      const res = await PostsService.fetchPosts();
+      console.log(res.data);
     } catch (e) {
       console.log(e?.response?.data?.message);
     }
