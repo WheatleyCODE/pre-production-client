@@ -35,11 +35,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' })
               <ActiveLink className={s.link} href="/">
                 Главная
               </ActiveLink>
-              <ActiveLink className={s.link} href="/post">
+              <ActiveLink className={s.link} href="/posts">
                 Посты
               </ActiveLink>
-              <ActiveLink className={s.link} href="/cast">
-                Касты
+              <ActiveLink className={s.link} href="/tracks">
+                Треки
               </ActiveLink>
             </nav>
           </div>
