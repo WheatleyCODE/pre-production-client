@@ -1,4 +1,4 @@
-import { useActions } from '@hooks';
+import { useActions, useTypedSelector } from '@hooks';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 
@@ -10,6 +10,8 @@ const Home: NextPage = () => {
       checkAuth();
     }
   }, []);
+
+  // ! Добавить проверку на ативированнй аккаунт
 
   return (
     <div>

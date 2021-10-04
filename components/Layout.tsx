@@ -4,14 +4,15 @@ import Image from 'next/image';
 import { ActiveLink } from '@UI';
 import logo from '../assets/img/logo.png';
 import s from '@s.components/Layout.module.scss';
-import { useTypedSelector } from '@hooks';
+import { useActions, useTypedSelector } from '@hooks';
 
 export interface LayoutProps {
   title: string;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' }) => {
-  const { user } = useTypedSelector((state) => state.player);
+  const { user, isAuth } = useTypedSelector((state) => state.player);
+  const { logout } = useActions();
 
   return (
     <>
@@ -44,13 +45,21 @@ export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' })
             </nav>
           </div>
           <div className={s.user}>
-            {user.isActivated && <div>Аватар</div>}
-            <ActiveLink className={s.link} href="/login">
-              Войти
-            </ActiveLink>
-            <ActiveLink className={s.link} href="/register">
-              Зарегистрироваться
-            </ActiveLink>
+            {isAuth && (
+              <>
+                <div onClick={() => logout()}>Выйти</div>
+              </>
+            )}
+            {!isAuth && (
+              <>
+                <ActiveLink className={s.link} href="/login">
+                  Войти
+                </ActiveLink>
+                <ActiveLink className={s.link} href="/register">
+                  Зарегистрироваться
+                </ActiveLink>
+              </>
+            )}
           </div>
         </div>
       </div>
