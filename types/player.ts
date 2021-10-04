@@ -1,5 +1,5 @@
-import { IPost } from '@t/IPost';
-import { IUser } from './IUser';
+import { IPost } from '@t';
+import { IUser } from '@t';
 export interface PlayerState {
   test: any[];
   isAuth: boolean;

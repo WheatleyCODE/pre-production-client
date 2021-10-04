@@ -1,13 +1,13 @@
-import { UserService } from '../../services/UserService';
+import { UserService } from '@services';
 import { Dispatch } from 'react';
 import { AuthService } from '@services';
-import { IUser } from '../../types/IUser';
-import { PlayerAction, PlayerActionTypes } from '../../types/player';
+import { IUser } from '@t';
+import { PlayerAction, PlayerActionTypes } from '@t/player';
 import axios from 'axios';
-import { AuthResponse } from '../../types/response/AuthResponse';
-import { API_URL } from '../../http';
-import { PostsService } from '@services/PostsService';
-import { IPost } from '@t/IPost';
+import { AuthResponse } from '@t/response/AuthResponse';
+import { API_URL } from '@http';
+import { PostsService } from '@services';
+import { IPost } from '@t';
 
 export const setTestAc = (arr: any[]): PlayerAction => {
   return {

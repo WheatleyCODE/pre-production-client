@@ -1,5 +1,5 @@
-import { AuthResponse } from './../types/response/AuthResponse';
-import $api from '../http';
+import { AuthResponse } from '@t/response/AuthResponse';
+import $api from '@http';
 import { AxiosResponse } from 'axios';
 
 export class AuthService {

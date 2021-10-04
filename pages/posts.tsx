@@ -1,9 +1,7 @@
 import { useActions, useTypedSelector } from '@hooks';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
-import Image from 'next/image';
 import s from '@s.pages/posts.module.scss';
-import { API_URL } from '@http';
 
 const Posts: NextPage = () => {
   const { fetchPosts } = useActions();

@@ -1,5 +1,5 @@
-import { IUser } from '../../types/IUser';
-import { PlayerState, PlayerAction, PlayerActionTypes } from '../../types/player';
+import { IUser } from '@t';
+import { PlayerState, PlayerAction, PlayerActionTypes } from '@t/player';
 
 const initialState: PlayerState = {
   test: [],
@@ -7,6 +7,7 @@ const initialState: PlayerState = {
   user: {} as IUser,
   posts: [],
 };
+
 export const playerReducer = (state = initialState, action: PlayerAction): PlayerState => {
   switch (action.type) {
     case PlayerActionTypes.SET_TEST: {

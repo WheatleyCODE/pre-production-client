@@ -9,9 +9,7 @@ const composeEnhancers =
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-// create a makeStore function
 const makeStore: MakeStore<Store<RootState>> = (context: Context) =>
   createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
-// export an assembled wrapper
 export const wrapper = createWrapper<Store<RootState>>(makeStore, { debug: true });

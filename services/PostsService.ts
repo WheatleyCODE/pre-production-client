@@ -1,6 +1,6 @@
-import { IPost } from '@t/IPost';
+import { IPost } from '@t';
 import { AxiosResponse } from 'axios';
-import $api from '../http';
+import $api from '@http';
 
 export class PostsService {
   static fetchPosts(): Promise<AxiosResponse<IPost[]>> {
