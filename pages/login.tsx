@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 import { LoginForm } from '@components';
 import { useActions, useTypedSelector } from '@hooks';
 
-const Home: NextPage = () => {
+const Login: NextPage = () => {
   const { test } = useTypedSelector((state) => state.player);
-  const { setTestAc, checkAuth } = useActions();
+  const { setTestAc } = useActions();
 
   useEffect(() => {
     setTestAc(['arr', 'arr', 'marr']);
-    if (localStorage.getItem('token')) {
-      checkAuth();
-    }
+    // if (localStorage.getItem('token')) {
+    //   checkAuth();
+    // }
   }, []);
   return (
     <>
@@ -22,4 +22,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Login;

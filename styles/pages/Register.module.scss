@@ -1,0 +1,7 @@
+@import '../variables';
+@import '../mixins';
+
+.main {
+  @include flex-center;
+  padding-top: 50px;
+}

@@ -1,13 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import s from '@s.components/Layout.module.scss';
+import Image from 'next/image';
 import { ActiveLink } from '@UI';
+import logo from '../assets/img/logo.png';
+import s from '@s.components/Layout.module.scss';
+import { useTypedSelector } from '@hooks';
 
 export interface LayoutProps {
   title: string;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' }) => {
+  const { user } = useTypedSelector((state) => state.player);
+
   return (
     <>
       <Head>
@@ -16,9 +21,14 @@ export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' })
       <div className={s.navBar}>
         <div className={s.width}>
           <div className={s.logo}>
-            <Link class-name="link" href="/">
-              Главная
-            </Link>
+            <ActiveLink className={s.link} href="/">
+              <div className={s.img}>
+                <Image src={logo} alt="logo" />
+              </div>
+            </ActiveLink>
+            <ActiveLink className={s.logoLink} href="/">
+              Spotify Clone
+            </ActiveLink>
           </div>
           <div>
             <nav className={s.menu}>
@@ -34,9 +44,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' })
             </nav>
           </div>
           <div className={s.user}>
-            <Link class-name="link" href="/login">
-              Логин
-            </Link>
+            {user.isActivated && <div>Аватар</div>}
+            <ActiveLink className={s.link} href="/login">
+              Войти
+            </ActiveLink>
+            <ActiveLink className={s.link} href="/register">
+              Зарегистрироваться
+            </ActiveLink>
           </div>
         </div>
       </div>

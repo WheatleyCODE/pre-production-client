@@ -1,6 +1,6 @@
-import UsersService from '../../services/UserService';
+import { UserService } from '../../services/UserService';
 import { Dispatch } from 'react';
-import AuthService from '@services';
+import { AuthService } from '@services';
 import { IUser } from '../../types/IUser';
 import { PlayerAction, PlayerActionTypes } from '../../types/player';
 import axios from 'axios';
@@ -89,7 +89,7 @@ export const checkAuth = () => {
 export const fetchUsers = () => {
   return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
     try {
-      const res = await UsersService.fetchUsers();
+      const res = await UserService.fetchUsers();
       console.log(res);
       dispatch(setTestAc(res.data));
     } catch (e) {

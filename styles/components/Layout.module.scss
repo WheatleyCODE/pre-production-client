@@ -30,20 +30,32 @@
   }
 }
 
+.img {
+  width: 45px;
+  height: 45px;
+}
+
 .logo {
   @include flex-center;
-  background-color: $colorLightGrey;
   height: 100%;
-  width: 60px;
+}
+
+.logoLink {
+  color: $colorGreen !important;
+  font-size: 20px;
+  margin-left: 5px;
 }
 
 .user {
   @include flex-center;
-  background-color: $colorLightGrey;
   height: 100%;
-  width: 60px;
+
+  a:first-child {
+    margin-right: 15px;
+  }
 }
 
 .link {
   color: $colorBlack;
+  font-size: 16px;
 }
