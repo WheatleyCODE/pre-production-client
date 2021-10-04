@@ -5,6 +5,7 @@ const initialState: PlayerState = {
   test: [],
   isAuth: false,
   user: {} as IUser,
+  posts: [],
 };
 export const playerReducer = (state = initialState, action: PlayerAction): PlayerState => {
   switch (action.type) {
@@ -28,6 +29,13 @@ export const playerReducer = (state = initialState, action: PlayerAction): Playe
         user: {
           ...action.payload,
         },
+      };
+    }
+
+    case PlayerActionTypes.SET_POSTS: {
+      return {
+        ...state,
+        posts: [...action.payload],
       };
     }
 

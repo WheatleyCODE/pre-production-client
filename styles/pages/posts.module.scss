@@ -1,0 +1,16 @@
+@import '../variables';
+@import '../mixins';
+.main {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post {
+  box-shadow: $boxShadow;
+  width: 300px;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 5px;
+}

@@ -1,19 +1,27 @@
+import { IPost } from '@t/IPost';
 import { IUser } from './IUser';
 export interface PlayerState {
   test: any[];
   isAuth: boolean;
   user: IUser;
+  posts: IPost[];
 }
 
 export enum PlayerActionTypes {
   SET_TEST = 'SET_TEST',
   SET_USER = 'SET_USER',
   SET_AUTH = 'SET_AUTH',
+  SET_POSTS = 'SET_POSTS',
 }
 
 interface SetTestAction {
   type: PlayerActionTypes.SET_TEST;
   payload: any[];
+}
+
+interface SetPostsAction {
+  type: PlayerActionTypes.SET_POSTS;
+  payload: IPost[];
 }
 
 interface SetUserAction {
@@ -26,4 +34,4 @@ interface SetAuthAction {
   payload: boolean;
 }
 
-export type PlayerAction = SetTestAction | SetUserAction | SetAuthAction;
+export type PlayerAction = SetTestAction | SetUserAction | SetAuthAction | SetPostsAction;

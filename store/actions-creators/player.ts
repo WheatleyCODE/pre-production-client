@@ -7,11 +7,19 @@ import axios from 'axios';
 import { AuthResponse } from '../../types/response/AuthResponse';
 import { API_URL } from '../../http';
 import { PostsService } from '@services/PostsService';
+import { IPost } from '@t/IPost';
 
 export const setTestAc = (arr: any[]): PlayerAction => {
   return {
     type: PlayerActionTypes.SET_TEST,
     payload: arr,
+  };
+};
+
+export const setPostsAc = (posts: IPost[]): PlayerAction => {
+  return {
+    type: PlayerActionTypes.SET_POSTS,
+    payload: posts,
   };
 };
 
@@ -104,6 +112,7 @@ export const fetchPosts = () => {
     try {
       const res = await PostsService.fetchPosts();
       console.log(res.data);
+      dispatch(setPostsAc(res.data));
     } catch (e) {
       console.log(e?.response?.data?.message);
     }
