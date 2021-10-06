@@ -1,17 +1,7 @@
-import { useActions } from '@hooks';
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
 import s from '@s.pages/index.module.scss';
 
 const Home: NextPage = () => {
-  const { checkAuth } = useActions();
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      checkAuth();
-    }
-  }, []);
-
   // ! Добавить проверку на ативированнй аккаунт
   return (
     <div className={s.main}>
