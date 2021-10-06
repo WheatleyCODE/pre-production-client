@@ -49,6 +49,7 @@
 .user {
   @include flex-center;
   height: 100%;
+  width: 213px;
 
   a:first-child {
     margin-right: 15px;
