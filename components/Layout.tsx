@@ -10,7 +10,7 @@ export interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, title = 'Best Site' }) => {
-  const { isAuth } = useTypedSelector((state) => state.player);
+  const { isAuth } = useTypedSelector((state) => state.user);
   const { logout } = useActions();
 
   return (

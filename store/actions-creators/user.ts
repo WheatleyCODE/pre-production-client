@@ -2,43 +2,43 @@ import { UserService } from '@services';
 import { Dispatch } from 'react';
 import { AuthService } from '@services';
 import { IUser } from '@t';
-import { PlayerAction, PlayerActionTypes } from '@t/player';
+import { UserAction, UserActionTypes } from '@t/user';
 import axios from 'axios';
 import { AuthResponse } from '@t/response/AuthResponse';
 import { API_URL } from '@http';
 import { PostsService } from '@services';
 import { IPost } from '@t';
 
-export const setTestAc = (arr: any[]): PlayerAction => {
+export const setTestAc = (arr: any[]): UserAction => {
   return {
-    type: PlayerActionTypes.SET_TEST,
+    type: UserActionTypes.SET_TEST,
     payload: arr,
   };
 };
 
-export const setPostsAc = (posts: IPost[]): PlayerAction => {
+export const setPostsAc = (posts: IPost[]): UserAction => {
   return {
-    type: PlayerActionTypes.SET_POSTS,
+    type: UserActionTypes.SET_POSTS,
     payload: posts,
   };
 };
 
-export const setUserAc = (user: IUser): PlayerAction => {
+export const setUserAc = (user: IUser): UserAction => {
   return {
-    type: PlayerActionTypes.SET_USER,
+    type: UserActionTypes.SET_USER,
     payload: user,
   };
 };
 
-export const setAuthAc = (boolean: boolean): PlayerAction => {
+export const setAuthAc = (boolean: boolean): UserAction => {
   return {
-    type: PlayerActionTypes.SET_AUTH,
+    type: UserActionTypes.SET_AUTH,
     payload: boolean,
   };
 };
 
 export const login = (email: string, password: string) => {
-  return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       const res = await AuthService.login(email, password);
       console.log(res);
@@ -52,7 +52,7 @@ export const login = (email: string, password: string) => {
 };
 
 export const registration = (email: string, password: string) => {
-  return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       const res = await AuthService.registration(email, password);
       console.log(res);
@@ -66,7 +66,7 @@ export const registration = (email: string, password: string) => {
 };
 
 export const logout = () => {
-  return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       const res = await AuthService.logout();
       console.log(res);
@@ -80,7 +80,7 @@ export const logout = () => {
 };
 
 export const checkAuth = () => {
-  return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       const res = await axios.get<AuthResponse>(`${API_URL}/auth/refresh`, {
         withCredentials: true,
@@ -96,7 +96,7 @@ export const checkAuth = () => {
 };
 
 export const fetchUsers = () => {
-  return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       const res = await UserService.fetchUsers();
       console.log(res);
@@ -108,7 +108,7 @@ export const fetchUsers = () => {
 };
 
 export const fetchPosts = () => {
-  return async (dispatch: Dispatch<PlayerAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       const res = await PostsService.fetchPosts();
       console.log(res.data);

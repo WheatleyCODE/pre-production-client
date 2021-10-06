@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 const Activate: NextPage = () => {
-  const { user } = useTypedSelector((state) => state.player);
+  const { user } = useTypedSelector((state) => state.user);
   const router = useRouter();
 
   useEffect(() => {

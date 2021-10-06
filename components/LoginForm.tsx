@@ -5,7 +5,7 @@ export const LoginForm: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { isAuth, user } = useTypedSelector((state) => state.player);
+  const { isAuth, user } = useTypedSelector((state) => state.user);
   const { login, logout, registration, fetchUsers } = useActions();
 
   return (

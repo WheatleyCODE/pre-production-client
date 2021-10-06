@@ -5,7 +5,7 @@ import s from '@s.pages/posts.module.scss';
 
 const Posts: NextPage = () => {
   const { fetchPosts } = useActions();
-  const { posts } = useTypedSelector((state) => state.player);
+  const { posts } = useTypedSelector((state) => state.user);
 
   useEffect(() => {
     fetchPosts();

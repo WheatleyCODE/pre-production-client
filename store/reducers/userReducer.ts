@@ -1,30 +1,30 @@
 import { IUser } from '@t';
-import { PlayerState, PlayerAction, PlayerActionTypes } from '@t/player';
+import { UserState, UserAction, UserActionTypes } from '@t/user';
 
-const initialState: PlayerState = {
+const initialState: UserState = {
   test: [],
   isAuth: false,
   user: {} as IUser,
   posts: [],
 };
 
-export const playerReducer = (state = initialState, action: PlayerAction): PlayerState => {
+export const userReducer = (state = initialState, action: UserAction): UserState => {
   switch (action.type) {
-    case PlayerActionTypes.SET_TEST: {
+    case UserActionTypes.SET_TEST: {
       return {
         ...state,
         test: [...action.payload],
       };
     }
 
-    case PlayerActionTypes.SET_AUTH: {
+    case UserActionTypes.SET_AUTH: {
       return {
         ...state,
         isAuth: action.payload,
       };
     }
 
-    case PlayerActionTypes.SET_USER: {
+    case UserActionTypes.SET_USER: {
       return {
         ...state,
         user: {
@@ -33,7 +33,7 @@ export const playerReducer = (state = initialState, action: PlayerAction): Playe
       };
     }
 
-    case PlayerActionTypes.SET_POSTS: {
+    case UserActionTypes.SET_POSTS: {
       return {
         ...state,
         posts: [...action.payload],

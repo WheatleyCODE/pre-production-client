@@ -4,7 +4,7 @@ import { LoginForm } from '@components';
 import { useActions, useTypedSelector } from '@hooks';
 
 const Login: NextPage = () => {
-  const { test } = useTypedSelector((state) => state.player);
+  const { test } = useTypedSelector((state) => state.user);
   const { setTestAc } = useActions();
 
   useEffect(() => {
