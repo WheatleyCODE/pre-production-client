@@ -1,0 +1,13 @@
+@import '../mixins';
+@import '../variables';
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.main {
+  padding-top: 30px;
+  @include flex-center;
+  @include max-width;
+  flex-direction: column;
+}

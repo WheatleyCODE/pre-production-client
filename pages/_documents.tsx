@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
@@ -10,11 +11,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-            rel="stylesheet"
-          />
+          <script src="https://use.fontawesome.com/9eaad9bce7.js"></script>
         </Head>
         <body>
           <Main />

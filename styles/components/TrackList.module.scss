@@ -1,0 +1,10 @@
+@import '../mixins';
+@import '../variables';
+
+.tracksPlace {
+  margin-top: 20px;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
+  width: 100%;
+  padding: 20px 40px;
+}
