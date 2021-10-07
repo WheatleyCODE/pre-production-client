@@ -5,9 +5,11 @@ import s from '@s.pages/tracks/[id].module.scss';
 import { API_URL } from '@http';
 import { CommentList } from '@components';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const TrackPage: NextPage = () => {
   const { currentTrack } = useTypedSelector((state) => state.track);
+  const router = useRouter();
   const { fetchCurrentTrack } = useActions();
   useEffect(() => {
     fetchCurrentTrack('615d7871d539150fc48dc3c3');
@@ -15,7 +17,9 @@ const TrackPage: NextPage = () => {
   return (
     <div className={s.center}>
       <div className={s.main}>
-        <div className={s.back}>{'< Назад'}</div>
+        <div onClick={() => router.push('/tracks')} className={s.back}>
+          {'< Назад'}
+        </div>
         <div className={s.info}>
           <div className={s.img}>
             <img src={`${API_URL}/${currentTrack.picture}`} alt="picture" />
