@@ -2,10 +2,12 @@ import { ITrack } from '@t';
 
 export interface TrackState {
   tracks: ITrack[];
+  currentTrack: ITrack;
 }
 
 export enum TrackActionTypes {
   SET_TRACKS = 'SET_TRACKS',
+  SET_CURRENT_TRACKS = 'SET_CURRENT_TRACKS',
 }
 
 interface SetTrackAction {
@@ -13,4 +15,9 @@ interface SetTrackAction {
   payload: ITrack[];
 }
 
-export type TrackAction = SetTrackAction;
+interface SetCurrentTrackAction {
+  type: TrackActionTypes.SET_CURRENT_TRACKS;
+  payload: ITrack;
+}
+
+export type TrackAction = SetTrackAction | SetCurrentTrackAction;

@@ -1,0 +1,17 @@
+@import '../mixins';
+@import '../variables';
+
+.comment {
+  box-shadow: $boxShadow;
+  padding: 20px;
+  border-radius: $borderRadius;
+  margin-top: 20px;
+}
+
+.username {
+  font-size: 1.5rem;
+}
+
+.line {
+  margin: 10px 0;
+}

@@ -1,3 +1,8 @@
+export interface IComments {
+  username: string;
+  text: string;
+  _id: string;
+}
 export interface ITrack {
   name: string;
   artist: string;
@@ -6,5 +11,5 @@ export interface ITrack {
   picture: string;
   audio: string;
   _id: string;
-  comments: any[]; // ! Времменно
+  comments: IComments[];
 }

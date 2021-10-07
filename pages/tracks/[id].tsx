@@ -1,25 +1,29 @@
-import { useTypedSelector } from '@hooks';
+import { useActions, useTypedSelector } from '@hooks';
 import { NextPage } from 'next';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import s from '@s.pages/tracks/[id].module.scss';
 import { API_URL } from '@http';
+import { CommentList } from '@components';
+import { useEffect } from 'react';
 
 const TrackPage: NextPage = () => {
-  const { tracks } = useTypedSelector((state) => state.track);
-  const testTreck = tracks[2];
-  console.log(testTreck);
+  const { currentTrack } = useTypedSelector((state) => state.track);
+  const { fetchCurrentTrack } = useActions();
+  useEffect(() => {
+    fetchCurrentTrack('615d7871d539150fc48dc3c3');
+  }, []);
   return (
     <div className={s.center}>
       <div className={s.main}>
         <div className={s.back}>{'< Назад'}</div>
         <div className={s.info}>
           <div className={s.img}>
-            <img src={`${API_URL}/${testTreck.picture}`} alt="picture" />
+            <img src={`${API_URL}/${currentTrack.picture}`} alt="picture" />
           </div>
           <div className={s.title}>
-            <div className={s.artist}>{testTreck.artist}</div>
-            <div className={s.name}>{testTreck.name}</div>
-            <div className={s.listeners}>Прослушиваний: {testTreck.listens}</div>
+            <div className={s.artist}>{currentTrack.artist}</div>
+            <div className={s.name}>{currentTrack.name}</div>
+            <div className={s.listeners}>Прослушиваний: {currentTrack.listens}</div>
           </div>
           <div className={s.play}>
             <div className={s.arrow}>
@@ -29,10 +33,12 @@ const TrackPage: NextPage = () => {
         </div>
         <hr className={s.line} />
         <div className={s.text}>
-          <pre>{testTreck.text}</pre>
+          <pre>{currentTrack.text}</pre>
         </div>
         <hr className={s.line} />
-        <div className={s.comments}>comment</div>
+        <div className={s.comments}>
+          <CommentList comments={currentTrack.comments} />
+        </div>
       </div>
     </div>
   );
