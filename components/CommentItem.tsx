@@ -11,7 +11,7 @@ export const CommentItem: FC<ICommentItemProps> = ({ comment }) => {
       <div className={s.username}>{comment.username}</div>
       <hr className={s.line} />
       <div className={s.text}>
-        <pre>{comment.text}</pre>
+        <div>{comment.text}</div>
       </div>
     </div>
   );
