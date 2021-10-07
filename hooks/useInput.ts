@@ -11,6 +11,7 @@ export interface IUnput {
   validError: string;
   isError: boolean;
   isValid: boolean;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export enum InputType {
@@ -134,6 +135,7 @@ export const useInput = (initialValue: string, placeholder: string, type: InputT
       type,
       onBlur,
     },
+    setValue,
     validError,
     isError: !!(touched && validError),
     isValid,

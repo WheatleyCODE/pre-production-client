@@ -14,6 +14,12 @@ export const RegisterForm: FC = () => {
   const { registration, login } = useActions();
 
   const onRegisterHandler = async () => {
+    if (
+      emailInput.default.value === '' ||
+      passwordInput.default.value === '' ||
+      userNameInput.default.value === ''
+    )
+      return null;
     await registration(
       emailInput.default.value,
       passwordInput.default.value,
@@ -52,7 +58,12 @@ export const RegisterForm: FC = () => {
             validError={passwordInput.validError}
           />
         </div>
-        <Button onClickHandler={onRegisterHandler} text="Регистрация" buttonStyle="default" />
+        <Button
+          disable={passwordInput.isError || emailInput.isError || userNameInput.isError}
+          onClickHandler={onRegisterHandler}
+          text="Регистрация"
+          buttonStyle="default"
+        />
       </div>
     </div>
   );

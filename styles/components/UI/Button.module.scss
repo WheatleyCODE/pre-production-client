@@ -14,4 +14,15 @@
     background-color: $colorPrimary;
     color: $colorWhite;
   }
+
+  &:disabled {
+    border: 3px solid $colorLightGrey;
+    color: 3px solid $colorLightGrey;
+    color: $colorLightGrey;
+
+    &:hover {
+      background-color: $colorWhite;
+      color: $colorLightGrey;
+    }
+  }
 }
