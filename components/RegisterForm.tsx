@@ -1,40 +1,57 @@
 import { FC, useState } from 'react';
 import { useActions } from '@hooks';
 import { useRouter } from 'next/router';
+import { InputType, useInput } from '@hooks';
+import { Button, Input } from '@UI';
 import s from '@s.components/RegisterForm.module.scss';
 
 export const RegisterForm: FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const emailInput = useInput('', 'Почта', InputType.EMAIL);
+  const passwordInput = useInput('', 'Пароль', InputType.PASSWORD);
+  const userNameInput = useInput('', 'Имя пользователя', InputType.TEXT);
   const router = useRouter();
 
   const { registration, login } = useActions();
 
   const onRegisterHandler = async () => {
-    await registration(email, password);
-    await login(email, password);
+    await registration(emailInput.default.value, passwordInput.default.value);
+    await login(emailInput.default.value, passwordInput.default.value);
     router.push('/activate');
   };
 
   return (
     <div className={s.form}>
-      <h1>Регистрация</h1>
+      <h1 className={s.title}>Регистрация</h1>
       <div className={s.inputs}>
-        <input
-          value={email}
-          type="text"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={onRegisterHandler} type="button">
+        <div>
+          <Input
+            isError={userNameInput.isError}
+            icon="no"
+            defaultParams={userNameInput.default}
+            validError={userNameInput.validError}
+          />
+        </div>
+        <div>
+          <Input
+            isError={emailInput.isError}
+            icon="no"
+            defaultParams={emailInput.default}
+            validError={emailInput.validError}
+          />
+        </div>
+
+        <div>
+          <Input
+            isError={passwordInput.isError}
+            icon="no"
+            defaultParams={passwordInput.default}
+            validError={passwordInput.validError}
+          />
+        </div>
+        {/* <button onClick={onRegisterHandler} type="button">
           Регистрация
-        </button>
+        </button> */}
+        <Button onClickHandler={onRegisterHandler} text="Регистрация" buttonStyle="default" />
       </div>
     </div>
   );

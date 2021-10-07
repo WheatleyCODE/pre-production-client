@@ -5,10 +5,9 @@ import { useActions } from '@hooks';
 import s from '@s.pages/Register.module.scss';
 
 const Register: NextPage = () => {
-  const { setTestAc, checkAuth } = useActions();
+  const { checkAuth } = useActions();
 
   useEffect(() => {
-    setTestAc(['arr', 'arr', 'marr']);
     if (localStorage.getItem('token')) {
       checkAuth();
     }

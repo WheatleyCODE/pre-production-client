@@ -1,0 +1,33 @@
+@import '../../variables';
+
+.container {
+  position: relative;
+  width: 100%;
+  padding-top: 14px;
+}
+
+.error {
+  position: absolute;
+  background-color: #fff;
+  color: $colorRed;
+  top: 5px;
+  left: 7px;
+  font-size: 0.85rem;
+  padding: 0 3px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  padding-left: 20px;
+  background-color: $colorWhite;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid $colorLightGrey;
+  outline: none;
+  font-size: 1rem;
+
+  &:focus {
+    border-color: $colorPrimary;
+  }
+}
