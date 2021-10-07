@@ -51,10 +51,10 @@ export const login = (email: string, password: string) => {
   };
 };
 
-export const registration = (email: string, password: string) => {
+export const registration = (email: string, password: string, userName: string) => {
   return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
-      const res = await AuthService.registration(email, password);
+      const res = await AuthService.registration(email, password, userName);
       console.log(res);
       localStorage.setItem('token', res.data.accessToken);
       dispatch(setAuthAc(true));

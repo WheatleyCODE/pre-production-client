@@ -6,6 +6,7 @@ import { Button, Input } from '@UI';
 import s from '@s.components/RegisterForm.module.scss';
 
 export const RegisterForm: FC = () => {
+  const userNameInput = useInput('', 'Имя пользователя', InputType.TEXT);
   const emailInput = useInput('', 'Почта', InputType.EMAIL);
   const passwordInput = useInput('', 'Пароль', InputType.PASSWORD);
   const router = useRouter();
@@ -13,7 +14,11 @@ export const RegisterForm: FC = () => {
   const { registration, login } = useActions();
 
   const onRegisterHandler = async () => {
-    await registration(emailInput.default.value, passwordInput.default.value);
+    await registration(
+      emailInput.default.value,
+      passwordInput.default.value,
+      userNameInput.default.value
+    );
     await login(emailInput.default.value, passwordInput.default.value);
     router.push('/activate');
   };
@@ -22,6 +27,14 @@ export const RegisterForm: FC = () => {
     <div className={s.form}>
       <h1 className={s.title}>Регистрация</h1>
       <div className={s.inputs}>
+        <div>
+          <Input
+            isError={userNameInput.isError}
+            icon="no"
+            defaultParams={userNameInput.default}
+            validError={userNameInput.validError}
+          />
+        </div>
         <div>
           <Input
             isError={emailInput.isError}
