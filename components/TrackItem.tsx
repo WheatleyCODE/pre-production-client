@@ -5,6 +5,7 @@ import RestoreFromTrash from '@material-ui/icons/RestoreFromTrash';
 import Pause from '@material-ui/icons/Pause';
 import { ITrack } from '@t';
 import { API_URL } from '@http';
+import { useRouter } from 'next/router';
 
 export interface ITrackItemProps {
   track: ITrack;
@@ -12,16 +13,23 @@ export interface ITrackItemProps {
 }
 
 export const TrackItem: FC<ITrackItemProps> = ({ track, play }) => {
+  const router = useRouter();
+
+  const onClickHandler = () => {
+    router.push(`/tracks/${track._id}`);
+  };
+
   return (
     <div className={s.track}>
       <div className={s.icon}>{play ? <Pause /> : <PlayArrow />}</div>
-      <div className={s.image}>
+      <div onClick={() => onClickHandler()} className={s.image}>
         <img src={`${API_URL}/${track.picture}`} alt="picture" />
       </div>
-      <div className={s.info}>
+      <div onClick={() => onClickHandler()} className={s.info}>
         <div className={s.name}>{track.name}</div>
         <div className={s.artist}>{track.artist}</div>
       </div>
+      {play && <div className={s.time}>1:35 / 3:12</div>}
       <div className={s.trash}>
         <RestoreFromTrash />
       </div>

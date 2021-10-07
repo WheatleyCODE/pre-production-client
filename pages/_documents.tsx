@@ -10,9 +10,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <script src="https://use.fontawesome.com/9eaad9bce7.js"></script>
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />

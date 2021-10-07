@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { TrackList } from '@components';
-import s from '@s.pages/tracks.module.scss';
 import { useEffect } from 'react';
 import { useActions } from '@hooks';
+import s from '@s.pages/tracks/index.module.scss';
 
 const Tracks: NextPage = () => {
   const { fetchTracks } = useActions();

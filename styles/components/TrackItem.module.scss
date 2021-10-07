@@ -41,6 +41,7 @@
   height: 55px;
   width: 55px;
   border-radius: 7px;
+  cursor: pointer;
 
   img {
     border-radius: 7px;
@@ -54,12 +55,18 @@
   flex-direction: column;
   justify-content: space-between;
   height: 60px;
+  width: 200px;
   padding: 6px 12px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .name {
   font-size: 1.1rem;
+}
+
+.time {
+  margin-left: 20px;
 }
 
 .artist {
