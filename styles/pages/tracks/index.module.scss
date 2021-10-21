@@ -7,8 +7,32 @@
 }
 
 .main {
-  padding-top: 30px;
+  position: relative;
+  padding-top: 40px;
   @include flex-center;
   @include max-width;
   flex-direction: column;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.load {
+  font-size: 1.1rem;
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  color: $colorGreen;
+  @include flex-center;
+  padding: 12px;
+  width: 180px;
+  border-radius: 7px;
+  box-shadow: $boxShadow;
+
+  &:hover {
+    color: $colorWhite;
+    background-color: $colorGreen;
+    cursor: pointer;
+  }
 }
