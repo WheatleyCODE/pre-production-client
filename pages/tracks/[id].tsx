@@ -12,8 +12,19 @@ const TrackPage: NextPage = () => {
   const router = useRouter();
   const { fetchCurrentTrack } = useActions();
   useEffect(() => {
-    fetchCurrentTrack('615d7871d539150fc48dc3c3');
-  }, []);
+    console.log(router);
+    if (!router.query.id) {
+      return;
+    }
+    if (typeof router.query.id === 'string') {
+      fetchCurrentTrack(router.query.id);
+    }
+  }, [router.query.id]);
+
+  if (!router.query.id) {
+    return <div />;
+  }
+
   return (
     <div className={s.center}>
       <div className={s.main}>

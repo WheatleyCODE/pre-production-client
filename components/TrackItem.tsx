@@ -6,6 +6,7 @@ import Pause from '@material-ui/icons/Pause';
 import { ITrack } from '@t';
 import { API_URL } from '@http';
 import { useRouter } from 'next/router';
+import { useTypedSelector } from '@hooks';
 
 export interface ITrackItemProps {
   track: ITrack;
@@ -14,6 +15,7 @@ export interface ITrackItemProps {
 
 export const TrackItem: FC<ITrackItemProps> = ({ track, play }) => {
   const router = useRouter();
+  const { isAuth } = useTypedSelector((state) => state.user);
 
   const onClickHandler = () => {
     router.push(`/tracks/${track._id}`);
@@ -30,9 +32,11 @@ export const TrackItem: FC<ITrackItemProps> = ({ track, play }) => {
         <div className={s.artist}>{track.artist}</div>
       </div>
       {play && <div className={s.time}>1:35 / 3:12</div>}
-      <div className={s.trash}>
-        <RestoreFromTrash />
-      </div>
+      {isAuth && (
+        <div className={s.trash}>
+          <RestoreFromTrash />
+        </div>
+      )}
     </div>
   );
 };

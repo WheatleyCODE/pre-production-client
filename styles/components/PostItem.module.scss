@@ -1,0 +1,19 @@
+@import '../variables';
+@import '../mixins';
+
+.post {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
+
+  hr {
+    margin: 10px 0;
+  }
+
+  img {
+    width: 200px;
+  }
+}

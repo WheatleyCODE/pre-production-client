@@ -22,8 +22,10 @@ export const CommentList: FC<ICommentListProps> = ({ comments }) => {
   }, [user.userName]);
 
   const addPost = async () => {
-    await TrackService.addComment(userNameInput.default.value, comment, '615d7871d539150fc48dc3c3');
-    fetchCurrentTrack('615d7871d539150fc48dc3c3');
+    if (typeof router.query.id === 'string') {
+      await TrackService.addComment(userNameInput.default.value, comment, router.query.id);
+      fetchCurrentTrack(router.query.id);
+    }
   };
 
   return (
