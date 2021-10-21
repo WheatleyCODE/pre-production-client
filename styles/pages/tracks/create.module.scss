@@ -21,6 +21,26 @@
   width: 100%;
   box-shadow: $boxShadow;
   border-radius: $borderRadius;
+
+  button {
+    font-size: 1.1rem;
+    position: absolute;
+    right: 80px;
+    bottom: 30px;
+    border: none;
+    color: $colorGreen;
+    @include flex-center;
+    padding: 12px;
+    width: 180px;
+    border-radius: 7px;
+    box-shadow: $boxShadow;
+
+    &:hover {
+      color: $colorWhite;
+      background-color: $colorGreen;
+      cursor: pointer;
+    }
+  }
 }
 
 .stepsLength {
@@ -36,23 +56,4 @@
   height: 100px;
   box-shadow: $boxShadow;
   border-radius: $borderRadius;
-}
-
-.next {
-  font-size: 1.1rem;
-  position: absolute;
-  right: 80px;
-  bottom: 30px;
-  color: $colorGreen;
-  @include flex-center;
-  padding: 12px;
-  width: 180px;
-  border-radius: 7px;
-  box-shadow: $boxShadow;
-
-  &:hover {
-    color: $colorWhite;
-    background-color: $colorGreen;
-    cursor: pointer;
-  }
 }
