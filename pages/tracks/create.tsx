@@ -11,13 +11,23 @@ const TrackCreate: NextPage = () => {
   const router = useRouter();
   const count = 3;
 
-  const onClickHandler = () => {
+  const nextStep = () => {
     if (!isAuth) {
       router.push('/login');
     }
     setCurrentStep((prev) => {
       if (prev + 1 > count) return prev;
       return prev + 1;
+    });
+  };
+
+  const backStep = () => {
+    if (!isAuth) {
+      router.push('/login');
+    }
+    setCurrentStep((prev) => {
+      if (prev - 1 < 1) return prev;
+      return prev - 1;
     });
   };
 
@@ -29,10 +39,34 @@ const TrackCreate: NextPage = () => {
           <div className={s.stepsLength}>
             <ActiveSteps count={count} current={current} />
           </div>
-          <div className={s.workplace}>вываывы</div>
+          <div className={s.workplace}>
+            {current === 1 && (
+              <div>
+                <h2>Шаг 1: Название трека</h2>
+              </div>
+            )}
+            {current === 2 && (
+              <div>
+                <h2>Шаг 2: Загрузите абложку трека</h2>
+              </div>
+            )}
+            {current === 3 && (
+              <div>
+                <h2>Шаг 3: Загрузите аудиофайл</h2>
+              </div>
+            )}
+          </div>
           <Button
-            onClickHandler={onClickHandler}
+            onClickHandler={nextStep}
             text={current === count ? 'Загрузить трек' : 'Следующий шаг'}
+            buttonStyle="default"
+            className={s.right}
+          />
+
+          <Button
+            className={s.left}
+            onClickHandler={backStep}
+            text={'Назад'}
             buttonStyle="default"
           />
         </div>
