@@ -1,11 +1,19 @@
 import { NextPage } from 'next';
 import React, { useState } from 'react';
-import s from '@s.pages/tracks/create.module.scss';
-import { ActiveSteps, Button } from '@UI';
-import { useTypedSelector } from '@hooks';
+import { ActiveSteps, Button, Input } from '@UI';
+import { InputType, useInput, useTypedSelector } from '@hooks';
 import { useRouter } from 'next/router';
+import { FileUpload } from '@components';
+import s from '@s.pages/tracks/create.module.scss';
 
 const TrackCreate: NextPage = () => {
+  const trackNameInput = useInput('', 'Название трека', InputType.TEXT);
+  const authorNameInput = useInput('', 'Автор', InputType.TEXT);
+  const textInput = useInput('', 'Текст песни', InputType.TEXT);
+
+  const [image, setImage] = useState<any>(null);
+  const [audio, setAudio] = useState<any>(null);
+
   const [current, setCurrentStep] = useState(1);
   const { isAuth } = useTypedSelector((state) => state.user);
   const router = useRouter();
@@ -41,30 +49,56 @@ const TrackCreate: NextPage = () => {
           </div>
           <div className={s.workplace}>
             {current === 1 && (
-              <div>
+              <div className={s.step}>
                 <h2>Шаг 1: Название трека</h2>
+                <form>
+                  <Input
+                    defaultParams={trackNameInput.default}
+                    icon=""
+                    isError={trackNameInput.isError}
+                    validError={trackNameInput.validError}
+                  />
+                  <Input
+                    defaultParams={authorNameInput.default}
+                    icon=""
+                    isError={authorNameInput.isError}
+                    validError={authorNameInput.validError}
+                  />
+                  <Input
+                    defaultParams={textInput.default}
+                    icon=""
+                    isError={textInput.isError}
+                    validError={textInput.validError}
+                  />
+                </form>
               </div>
             )}
             {current === 2 && (
-              <div>
+              <div className={s.step}>
                 <h2>Шаг 2: Загрузите абложку трека</h2>
+                <FileUpload setFile={setImage} accept="image/*">
+                  <Button className={s.uploadFile} text="Загрузите обложку" buttonStyle="" />
+                </FileUpload>
               </div>
             )}
             {current === 3 && (
-              <div>
+              <div className={s.step}>
                 <h2>Шаг 3: Загрузите аудиофайл</h2>
+                <FileUpload setFile={setAudio} accept="audio/*">
+                  <Button className={s.uploadFile} text="Загрузите аудио" buttonStyle="" />
+                </FileUpload>
               </div>
             )}
           </div>
           <Button
             onClickHandler={nextStep}
-            text={current === count ? 'Загрузить трек' : 'Следующий шаг'}
+            text={current === count ? 'Завершить' : 'Следующий шаг'}
             buttonStyle="default"
-            className={s.right}
+            className={`${s.right} ${s.step}`}
           />
 
           <Button
-            className={s.left}
+            className={`${s.left} ${s.step}`}
             onClickHandler={backStep}
             text={'Назад'}
             buttonStyle="default"

@@ -5,3 +5,4 @@ export { TrackItem } from './TrackItem';
 export { Layout } from './Layout';
 export { CommentItem } from './CommentItem';
 export { CommentList } from './CommentList';
+export { FileUpload } from './FileUpload';
