@@ -29,6 +29,16 @@ export const trackReducer = (state = initialState, action: TrackAction): TrackSt
         currentTrack: { ...action.payload },
       };
 
+    case TrackActionTypes.DELETE_TRACK: {
+      const prevState = [...state.tracks];
+      const newTracks = prevState.filter((track) => track._id !== action.payload);
+      console.log(newTracks, 'fdsfsfsfdfdfsdfsfdsfsfdsfdsfsd');
+      return {
+        ...state,
+        tracks: [...newTracks],
+      };
+    }
+
     default:
       return state;
   }

@@ -17,6 +17,10 @@ export class TrackService {
     return $api.post<ITrack>('/tracks', CreateTrackDto);
   }
 
+  static deleteTrack(id: string): Promise<AxiosResponse<ITrack>> {
+    return $api.delete<ITrack>(`/tracks/${id}`);
+  }
+
   static addComment(
     username: string,
     text: string,

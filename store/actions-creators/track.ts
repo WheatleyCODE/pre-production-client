@@ -12,6 +12,13 @@ export const setTrackAC = (tracks: ITrack[]): TrackAction => {
   };
 };
 
+export const deleteTrackAC = (id: string): TrackAction => {
+  return {
+    type: TrackActionTypes.DELETE_TRACK,
+    payload: id,
+  };
+};
+
 export const setCurrentTrackAC = (track: ITrack): TrackAction => {
   return {
     type: TrackActionTypes.SET_CURRENT_TRACKS,
@@ -46,6 +53,18 @@ export const addTrack = (dto: createTrackDto, redirect: () => void) => {
     } catch (e) {
       console.log(e?.response?.data?.message);
       console.log(e);
+    }
+  };
+};
+
+export const deleteTrack = (id: string) => {
+  return async (dispatch: Dispatch<TrackAction>): Promise<void> => {
+    try {
+      const res = await TrackService.deleteTrack(id);
+      dispatch(deleteTrackAC(id));
+      console.log(res);
+    } catch (e) {
+      console.log(e?.response?.data?.message);
     }
   };
 };

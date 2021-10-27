@@ -8,6 +8,12 @@ export interface TrackState {
 export enum TrackActionTypes {
   SET_TRACKS = 'SET_TRACKS',
   SET_CURRENT_TRACKS = 'SET_CURRENT_TRACKS',
+  DELETE_TRACK = 'DELETE_TRACK',
+}
+
+interface deleteTrackAction {
+  type: TrackActionTypes.DELETE_TRACK;
+  payload: string;
 }
 
 interface SetTrackAction {
@@ -20,4 +26,4 @@ interface SetCurrentTrackAction {
   payload: ITrack;
 }
 
-export type TrackAction = SetTrackAction | SetCurrentTrackAction;
+export type TrackAction = SetTrackAction | SetCurrentTrackAction | deleteTrackAction;
