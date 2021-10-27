@@ -4,6 +4,7 @@ import { AppProps } from 'next/app';
 import { wrapper } from '@store';
 import { Layout } from '@components';
 import { useActions } from '@hooks';
+import { AudioPlayer } from '@components/UI/AudioPlayer';
 
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
   const { checkAuth } = useActions();
@@ -15,9 +16,12 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <Layout title="App">
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Layout title="App">
+        <Component {...pageProps} />
+      </Layout>
+      <AudioPlayer lol="" />
+    </>
   );
 };
 

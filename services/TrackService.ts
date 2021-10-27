@@ -1,3 +1,4 @@
+import { createTrackDto } from '@t/ITrack';
 import { ITrack } from '@t';
 import { AxiosResponse } from 'axios';
 import $api from '@http';
@@ -10,6 +11,10 @@ export class TrackService {
 
   static fetchCurrentTrack(id: string): Promise<AxiosResponse<ITrack>> {
     return $api.get<ITrack>(`/tracks/${id}`);
+  }
+
+  static addTrack(CreateTrackDto: createTrackDto): Promise<AxiosResponse<ITrack>> {
+    return $api.post<ITrack>('/tracks', CreateTrackDto);
   }
 
   static addComment(

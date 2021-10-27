@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import React, { useState } from 'react';
 import { ActiveSteps, Button, Input } from '@UI';
-import { InputType, useInput, useTypedSelector } from '@hooks';
+import { InputType, useActions, useInput, useTypedSelector } from '@hooks';
 import { useRouter } from 'next/router';
 import { FileUpload } from '@components';
 import s from '@s.pages/tracks/create.module.scss';
@@ -16,10 +16,19 @@ const TrackCreate: NextPage = () => {
 
   const [current, setCurrentStep] = useState(1);
   const { isAuth } = useTypedSelector((state) => state.user);
+  const { addTrack } = useActions();
   const router = useRouter();
   const count = 3;
 
   const nextStep = () => {
+    console.log({
+      name: trackNameInput.default.value,
+      artist: authorNameInput.default.value,
+      text: textInput.default.value,
+      picture: image,
+      audio,
+    });
+
     if (!isAuth) {
       router.push('/login');
     }
@@ -37,6 +46,23 @@ const TrackCreate: NextPage = () => {
       if (prev - 1 < 1) return prev;
       return prev - 1;
     });
+  };
+
+  const postTrack = () => {
+    const redirect = () => {
+      router.push('/tracks');
+    };
+
+    addTrack(
+      {
+        name: trackNameInput.default.value,
+        artist: authorNameInput.default.value,
+        text: textInput.default.value,
+        picture: image,
+        audio,
+      },
+      redirect
+    );
   };
 
   return (
@@ -90,12 +116,23 @@ const TrackCreate: NextPage = () => {
               </div>
             )}
           </div>
-          <Button
-            onClickHandler={nextStep}
-            text={current === count ? 'Завершить' : 'Следующий шаг'}
-            buttonStyle="default"
-            className={`${s.right} ${s.step}`}
-          />
+          {current !== count && (
+            <Button
+              onClickHandler={nextStep}
+              text={'Следующий шаг'}
+              buttonStyle="default"
+              className={`${s.right} ${s.step}`}
+            />
+          )}
+
+          {current === count && (
+            <Button
+              onClickHandler={postTrack}
+              text={'Завершить'}
+              buttonStyle="default"
+              className={`${s.right} ${s.step}`}
+            />
+          )}
 
           <Button
             className={`${s.left} ${s.step}`}

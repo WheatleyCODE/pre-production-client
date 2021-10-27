@@ -3,6 +3,14 @@ export interface IComments {
   text: string;
   _id: string;
 }
+
+export interface createTrackDto {
+  name: string;
+  artist: string;
+  text: string;
+  picture: any;
+  audio: any;
+}
 export interface ITrack {
   name: string;
   artist: string;

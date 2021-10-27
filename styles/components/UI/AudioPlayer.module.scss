@@ -1,0 +1,115 @@
+@import '../../mixins';
+@import '../../variables';
+
+.main {
+  @include flex-center;
+  position: fixed;
+  width: 100vw;
+  height: 55px;
+  bottom: 0;
+  background-color: $colorWhite;
+  box-shadow: $boxShadow;
+}
+
+.width {
+  @include max-width;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.play,
+.text,
+.bar,
+.time,
+.volume,
+.track {
+  height: 100%;
+}
+
+.track {
+  display: flex;
+}
+
+.play {
+  @include flex-center;
+  margin-top: 5px;
+  margin-right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: $boxShadow;
+  cursor: pointer;
+
+  &:hover svg {
+    color: $colorGreen;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  cursor: pointer;
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .trackName {
+    font-size: 1.14rem;
+  }
+}
+
+.bar {
+  width: 450px;
+  @include flex-center;
+}
+
+.progressBar {
+  position: relative;
+  border-radius: 5px;
+  height: 23px;
+  width: 100%;
+  box-shadow: $boxShadow;
+}
+
+.progress {
+  border-radius: 5px;
+  background-color: $colorGreen;
+  height: 100%;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100px;
+  left: 180px;
+}
+
+.volume {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 250px;
+
+  .input {
+    display: flex;
+    align-items: center;
+    width: 160px;
+    height: 100%;
+
+    input {
+      width: 160px;
+    }
+  }
+
+  .range {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 15px;
+    width: 100px;
+  }
+}
