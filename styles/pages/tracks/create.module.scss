@@ -35,6 +35,17 @@
     box-shadow: $boxShadow;
     bottom: 30px;
 
+    &:disabled {
+      border: 3px solid $colorLightGrey;
+      color: 3px solid $colorLightGrey;
+      color: $colorLightGrey;
+
+      &:hover {
+        background-color: $colorWhite;
+        color: $colorLightGrey;
+      }
+    }
+
     &:hover {
       color: $colorWhite;
       background-color: $colorGreen;
@@ -84,4 +95,8 @@
 .uploadFile {
   margin-top: 50px;
   width: 320px;
+}
+
+.file {
+  margin-top: 20px;
 }

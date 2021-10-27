@@ -59,7 +59,7 @@ export const RegisterForm: FC = () => {
           />
         </div>
         <Button
-          disable={passwordInput.isError || emailInput.isError || userNameInput.isError}
+          disable={!passwordInput.isValid || !emailInput.isValid || !userNameInput.isValid}
           onClickHandler={onRegisterHandler}
           text="Регистрация"
           buttonStyle="default"

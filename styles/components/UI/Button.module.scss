@@ -1,6 +1,7 @@
 @import '../../variables';
 
 .button {
+  min-width: 70px;
   background-color: $colorWhite;
   border: 3px solid $colorPrimary;
   border-radius: 5px;

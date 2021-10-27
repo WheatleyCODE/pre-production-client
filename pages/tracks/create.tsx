@@ -105,6 +105,11 @@ const TrackCreate: NextPage = () => {
                 <FileUpload setFile={setImage} accept="image/*">
                   <Button className={s.uploadFile} text="Загрузите обложку" buttonStyle="" />
                 </FileUpload>
+                {!!image && (
+                  <div className={s.file}>
+                    <h2>Загружено: {image.name}</h2>
+                  </div>
+                )}
               </div>
             )}
             {current === 3 && (
@@ -113,11 +118,27 @@ const TrackCreate: NextPage = () => {
                 <FileUpload setFile={setAudio} accept="audio/*">
                   <Button className={s.uploadFile} text="Загрузите аудио" buttonStyle="" />
                 </FileUpload>
+                {!!audio && (
+                  <div className={s.file}>
+                    <h2>Загружено: {audio.name}</h2>
+                  </div>
+                )}
               </div>
             )}
           </div>
-          {current !== count && (
+          {current === 1 && (
             <Button
+              disable={!trackNameInput.isValid || !authorNameInput.isValid || !textInput.isValid}
+              onClickHandler={nextStep}
+              text={'Следующий шаг'}
+              buttonStyle="default"
+              className={`${s.right} ${s.step}`}
+            />
+          )}
+
+          {current === 2 && (
+            <Button
+              disable={!image}
               onClickHandler={nextStep}
               text={'Следующий шаг'}
               buttonStyle="default"
@@ -127,6 +148,7 @@ const TrackCreate: NextPage = () => {
 
           {current === count && (
             <Button
+              disable={!audio}
               onClickHandler={postTrack}
               text={'Завершить'}
               buttonStyle="default"
