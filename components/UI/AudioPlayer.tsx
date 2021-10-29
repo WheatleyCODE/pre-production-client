@@ -8,6 +8,7 @@ interface IAudioPlayerProps {
 
 export const AudioPlayer: FC<IAudioPlayerProps> = () => {
   const [volume, setVolume] = useState('30');
+  const [progress, setProgress] = useState('0');
 
   return (
     <div className={s.main}>
@@ -22,11 +23,20 @@ export const AudioPlayer: FC<IAudioPlayerProps> = () => {
           </div>
         </div>
         <div className={s.bar}>
-          <div onClick={(e) => console.log(e)} className={s.progressBar}>
+          {/* <div onClick={(e) => console.log(e)} className={s.progressBar}>
             <div className={s.time}>
               <p>02:42 / 03:43</p>
             </div>
             <div style={{ width: '20%' }} className={s.progress} />
+          </div> */}
+          <input
+            value={progress}
+            onChange={(e) => setProgress(e.target.value)}
+            className={s.trackBar}
+            type="range"
+          />
+          <div className={s.progress}>
+            <p>{progress} : 100</p>
           </div>
         </div>
         <div className={s.volume}>
