@@ -1,24 +1,12 @@
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
 import { LoginForm } from '@components';
-import { useActions, useTypedSelector } from '@hooks';
+import s from '@s.pages/Login.module.scss';
 
 const Login: NextPage = () => {
-  const { test } = useTypedSelector((state) => state.user);
-  const { setTestAc } = useActions();
-
-  useEffect(() => {
-    setTestAc(['arr', 'arr', 'marr']);
-    // if (localStorage.getItem('token')) {
-    //   checkAuth();
-    // }
-  }, []);
   return (
-    <>
-      <h1>Hello TEST!</h1>
-      <pre>{test.join(' ')}</pre>
+    <div className={s.main}>
       <LoginForm />
-    </>
+    </div>
   );
 };
 
