@@ -1,18 +1,8 @@
-import { ITrack } from './../../types/ITrack';
 import { TrackState, TrackAction, TrackActionTypes } from '@t/track';
 
 const initialState: TrackState = {
   tracks: [],
-  currentTrack: {
-    name: '',
-    artist: '',
-    comments: [],
-    text: '',
-    listens: 0,
-    picture: '',
-    audio: '',
-    _id: '',
-  },
+  currentTrack: null,
 };
 
 export const trackReducer = (state = initialState, action: TrackAction): TrackState => {

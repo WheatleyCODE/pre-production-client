@@ -2,7 +2,7 @@ import { ITrack } from '@t';
 
 export interface TrackState {
   tracks: ITrack[];
-  currentTrack: ITrack;
+  currentTrack: ITrack | null;
 }
 
 export enum TrackActionTypes {

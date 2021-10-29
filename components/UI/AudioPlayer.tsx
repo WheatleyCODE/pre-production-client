@@ -1,12 +1,14 @@
 import React, { FC, useState } from 'react';
 import s from '@s.components/UI/AudioPlayer.module.scss';
 import { PlayArrow } from '@material-ui/icons';
+import { useTypedSelector } from '@hooks';
 
 interface IAudioPlayerProps {
   lol: string;
 }
 
 export const AudioPlayer: FC<IAudioPlayerProps> = () => {
+  const { currentTrack } = useTypedSelector((state) => state.track);
   const [volume, setVolume] = useState('30');
   const [progress, setProgress] = useState('0');
 
@@ -18,8 +20,8 @@ export const AudioPlayer: FC<IAudioPlayerProps> = () => {
             <PlayArrow />
           </div>
           <div className={s.text}>
-            <p className={s.trackName}>Переплетено</p>
-            <p>Oxxxymiron</p>
+            <p className={s.trackName}>{currentTrack?.name}</p>
+            <p>{currentTrack?.artist}</p>
           </div>
         </div>
         <div className={s.bar}>

@@ -5,6 +5,7 @@ import { useTypedSelector } from '@hooks';
 
 export const TrackList: FC = () => {
   const { tracks } = useTypedSelector((state) => state.track);
+
   return (
     <div className={s.tracksPlace}>
       {tracks.map((track) => (

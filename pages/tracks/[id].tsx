@@ -21,7 +21,7 @@ const TrackPage: NextPage = () => {
     }
   }, [router.query.id]);
 
-  if (!router.query.id) {
+  if (!router.query.id || currentTrack === null) {
     return <div />;
   }
 

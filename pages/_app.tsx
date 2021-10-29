@@ -3,11 +3,12 @@ import React, { FC, useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { wrapper } from '@store';
 import { Layout } from '@components';
-import { useActions } from '@hooks';
+import { useActions, useTypedSelector } from '@hooks';
 import { AudioPlayer } from '@components/UI/AudioPlayer';
 
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
   const { checkAuth } = useActions();
+  const { currentTrack } = useTypedSelector((state) => state.track);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -20,7 +21,8 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
       <Layout title="App">
         <Component {...pageProps} />
       </Layout>
-      <AudioPlayer lol="" />
+
+      {currentTrack !== null && <AudioPlayer lol="" />}
     </>
   );
 };
