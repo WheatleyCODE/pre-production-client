@@ -23,6 +23,13 @@ export const setPostsAc = (posts: IPost[]): UserAction => {
   };
 };
 
+export const AddPostsAc = (post: IPost): UserAction => {
+  return {
+    type: UserActionTypes.ADD_POST,
+    payload: post,
+  };
+};
+
 export const setUserAc = (user: IUser): UserAction => {
   return {
     type: UserActionTypes.SET_USER,
@@ -113,6 +120,17 @@ export const fetchPosts = () => {
       const res = await PostsService.fetchPosts();
       console.log(res.data);
       dispatch(setPostsAc(res.data));
+    } catch (e) {
+      console.log(e?.response?.data?.message);
+    }
+  };
+};
+
+export const createPosts = (title: string, content: string, image: any) => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
+    try {
+      const res = await PostsService.createPost(title, content, image);
+      dispatch(AddPostsAc(res.data));
     } catch (e) {
       console.log(e?.response?.data?.message);
     }

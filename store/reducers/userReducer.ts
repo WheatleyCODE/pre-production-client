@@ -33,6 +33,13 @@ export const userReducer = (state = initialState, action: UserAction): UserState
       };
     }
 
+    case UserActionTypes.ADD_POST: {
+      return {
+        ...state,
+        posts: [action.payload, ...state.posts],
+      };
+    }
+
     case UserActionTypes.SET_POSTS: {
       return {
         ...state,

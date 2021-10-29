@@ -12,6 +12,12 @@ export enum UserActionTypes {
   SET_USER = 'SET_USER',
   SET_AUTH = 'SET_AUTH',
   SET_POSTS = 'SET_POSTS',
+  ADD_POST = 'ADD_POST',
+}
+
+interface AddPostAction {
+  type: UserActionTypes.ADD_POST;
+  payload: IPost;
 }
 
 interface SetTestAction {
@@ -34,4 +40,9 @@ interface SetAuthAction {
   payload: boolean;
 }
 
-export type UserAction = SetTestAction | SetUserAction | SetAuthAction | SetPostsAction;
+export type UserAction =
+  | SetTestAction
+  | SetUserAction
+  | SetAuthAction
+  | SetPostsAction
+  | AddPostAction;

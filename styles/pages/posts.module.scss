@@ -14,3 +14,24 @@
   padding: 20px;
   margin: 5px;
 }
+
+.addpost {
+  @include flex-center;
+  width: 1160px;
+  flex-direction: column;
+
+  & * {
+    width: 100%;
+  }
+
+  button {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  textarea {
+    margin-top: 10px;
+    padding: 10px;
+    padding-left: 20px;
+  }
+}
