@@ -1,23 +1,67 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import s from '@s.components/UI/AudioPlayer.module.scss';
-import { PlayArrow } from '@material-ui/icons';
-import { useTypedSelector } from '@hooks';
+import { Pause, PlayArrow } from '@material-ui/icons';
+import { useActions, useTypedSelector } from '@hooks';
 
 interface IAudioPlayerProps {
   lol: string;
 }
 
+let audio: any;
+
 export const AudioPlayer: FC<IAudioPlayerProps> = () => {
   const { currentTrack } = useTypedSelector((state) => state.track);
-  const [volume, setVolume] = useState('30');
-  const [progress, setProgress] = useState('0');
+  const { pause, duration, volume, currentTime } = useTypedSelector((state) => state.player);
+  const { playAC, pauseAC, setVolumeAC, setDurationAC, setCurrentTimeAC } = useActions();
+
+  useEffect(() => {
+    if (!audio) {
+      audio = new Audio();
+      setAudio();
+    }
+  }, []);
+
+  const setAudio = () => {
+    if (currentTrack) {
+      audio.src = `http://localhost:5000/${currentTrack.audio}`;
+      audio.volume = volume / 100;
+      audio.onloadedmetadata = () => {
+        setDurationAC(Math.ceil(Number(audio.duration)));
+      };
+
+      audio.ontimeupdate = () => {
+        setCurrentTimeAC(Math.ceil(Number(audio.currentTime)));
+      };
+    }
+  };
+
+  const onTogglePlayTrack = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    if (pause) {
+      playAC();
+      audio.play();
+    } else {
+      pauseAC();
+      audio.pause();
+    }
+  };
+
+  const onChangeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    audio.volume = Number(e.target.value) / 100;
+    setVolumeAC(Number(e.target.value));
+  };
+
+  const onChangeTime = (e: React.ChangeEvent<HTMLInputElement>) => {
+    audio.currentTime = Number(e.target.value);
+    setCurrentTimeAC(Number(e.target.value));
+  };
 
   return (
     <div className={s.main}>
       <div className={s.width}>
         <div className={s.track}>
-          <div className={s.play}>
-            <PlayArrow />
+          <div onClick={onTogglePlayTrack} className={s.play}>
+            {pause ? <PlayArrow /> : <Pause />}
           </div>
           <div className={s.text}>
             <p className={s.trackName}>{currentTrack?.name}</p>
@@ -25,25 +69,22 @@ export const AudioPlayer: FC<IAudioPlayerProps> = () => {
           </div>
         </div>
         <div className={s.bar}>
-          {/* <div onClick={(e) => console.log(e)} className={s.progressBar}>
-            <div className={s.time}>
-              <p>02:42 / 03:43</p>
-            </div>
-            <div style={{ width: '20%' }} className={s.progress} />
-          </div> */}
           <input
-            value={progress}
-            onChange={(e) => setProgress(e.target.value)}
+            max={duration}
+            value={currentTime}
+            onChange={onChangeTime}
             className={s.trackBar}
             type="range"
           />
           <div className={s.progress}>
-            <p>{progress} : 100</p>
+            <p>
+              {currentTime} : {duration}
+            </p>
           </div>
         </div>
         <div className={s.volume}>
           <div className={s.input}>
-            <input value={volume} onChange={(e) => setVolume(e.target.value)} type="range" />
+            <input value={volume} onChange={onChangeVolume} type="range" />
           </div>
           <div className={s.range}>
             <p>{volume} / 100</p>

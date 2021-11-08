@@ -18,7 +18,8 @@ export interface ITrackItemProps {
 export const TrackItem: FC<ITrackItemProps> = ({ track, play }) => {
   const router = useRouter();
   const { isAuth } = useTypedSelector((state) => state.user);
-  const { deleteTrack } = useActions();
+  const { pause } = useTypedSelector((state) => state.player);
+  const { deleteTrack, setCurrentTrackAC, playAC, pauseAC } = useActions();
 
   const [show, setShow] = useState(false);
 
@@ -30,9 +31,15 @@ export const TrackItem: FC<ITrackItemProps> = ({ track, play }) => {
     deleteTrack(id);
   };
 
+  const onTogglePlayTrack = () => {
+    setCurrentTrackAC(track);
+  };
+
   return (
     <div className={s.track}>
-      <div className={s.icon}>{play ? <Pause /> : <PlayArrow />}</div>
+      <div onClick={onTogglePlayTrack} className={s.icon}>
+        {play ? <Pause /> : <PlayArrow />}
+      </div>
       <div onClick={() => onClickHandler()} className={s.image}>
         <img src={`${API_URL}/${track.picture}`} alt="picture" />
       </div>
